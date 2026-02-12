@@ -20,10 +20,23 @@ int main() {
     const int CAPACIDADE = 100;
     int* array = new int[CAPACIDADE];
     int tamanho = 0;
-    
+    cin >> tamanho;
+
     // TODO: Chame a função para preencher o array
+    if (tamanho < 1 || tamanho > CAPACIDADE) {
+        return 0;
+    }
+    else {
+    for (int i = 0; i < tamanho; i++) {
+        array[i] = i * 10;
+    }
+}
     
     // TODO: Exiba o array
+    for (int i = 0; i < tamanho; i++) {
+        cout << array[i] << " ";
+    }
+    cout << endl;
     
     // Libera memória
     delete[] array;
