@@ -18,21 +18,76 @@ using namespace std;
 
 template<typename T>
 void trocar(T& a, T& b) {
-    // Implemente a troca
+    T temp = a;
+    a = b;
+    b = temp;
 }
 
 int main() {
-    // TODO: Crie shared_ptr para int
+
+    // pegar dois numeros do usuário e depois definir se é int ou double
+    string input1, input2;
+    cin >> input1 >> input2;
+    int int1 = 0;
+    int int2 = 0;
+    double double1 = 0.0;
+    double double2 = 0.0;
+
+    // Verificar se os inputs são int ou double
+    bool isInt = true;
+    for (char c : input1) {
+        if (!isdigit(c) && c != '-') {
+            isInt = false;
+            break;
+        }
+    }
+    for (char c : input2) {
+        if (!isdigit(c) && c != '-' && c != '.') {
+            isInt = false;
+            break;
+        }
+    }
+    if (isInt) {
+        int int1 = stoi(input1);
+        int int2 = stoi(input2);
     
-    // TODO: Crie shared_ptr para double
+        // TODO: Crie shared_ptr para int
+        shared_ptr<int> ptrInt1 = make_shared<int>(int1);
+        shared_ptr<int> ptrInt2 = make_shared<int>(int2);
+
+        // TODO: Exiba valores antes da troca
+        cout << "Antes: " << *ptrInt1 << " " << *ptrInt2 << endl;
     
-    // TODO: Exiba valores antes da troca
+        // TODO: Troque os valores
+        trocar(*ptrInt1, *ptrInt2);
     
-    // TODO: Troque os valores
+        // TODO: Exiba valores depois da troca
+        cout << "Depois: " << *ptrInt1 << " " << *ptrInt2 << endl;
     
-    // TODO: Exiba valores depois da troca
-    
-    // TODO: Mostre contagem de referências
-    
+        // TODO: Mostre contagem de referências
+        cout << "Refs: " << ptrInt1.use_count() << " " << ptrInt2.use_count() << endl;
+    }
+
+
+    if (!isInt) {
+        double double1 = stod(input1);
+        double double2 = stod(input2);
+
+        // TODO: Crie shared_ptr para double
+        shared_ptr<double> ptrDouble1 = make_shared<double>(double1);
+        shared_ptr<double> ptrDouble2 = make_shared<double>(double2);
+        
+        // TODO: Exiba valores antes da troca - DOUBLE
+        cout << "Antes: " << *ptrDouble1 << " " << *ptrDouble2 << endl;
+        
+        // TODO: Troque os valores - DOUBLE
+        trocar(*ptrDouble1, *ptrDouble2);
+        
+        // TODO: Exiba valores depois da troca- DOUBLE
+        cout << "Depois: " << *ptrDouble1 << " " << *ptrDouble2 << endl;
+        
+        // TODO: Mostre contagem de referências - DOUBLE
+        cout << "Refs: " << ptrDouble1.use_count() << " " << ptrDouble2.use_count() << endl;}
+        
     return 0;
 }
